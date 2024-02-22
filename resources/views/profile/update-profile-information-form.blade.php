@@ -51,6 +51,17 @@
                 <x-input-error for="photo" class="mt-2" />
             </div>
         @endif
+         <!-- Followers & Followings -->
+         <div class="col-span-6 sm:col-span-4 mt-4 flex ">
+            <div class="mx-4">
+              <p class="text-md text-gray-700 font-medium">Followers</p>
+              <p class="text-sm text-gray-600">{{ auth()->user()->followers->count() }}</p>
+            </div>
+            <div>
+              <p class="text-md text-gray-700 font-medium">Following</p>
+              <p class="text-sm text-gray-600">{{ auth()->user()->followings->count() }}</p>
+            </div>
+        </div>
 
         <!-- Name -->
         <div class="col-span-6 sm:col-span-4">

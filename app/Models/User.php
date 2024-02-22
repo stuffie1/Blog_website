@@ -27,6 +27,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -58,4 +59,18 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+    public function articles()
+{
+    return $this->hasMany(Blog::class);
+}
+    public function comments()
+{
+    return $this->hasMany(Comment::class);
+}
+    public function followers(){
+    return $this->belongsToMany(User::class, 'followers', 'following_id', 'follower_id');
+    }
+    public function followings(){
+    return $this->belongsToMany(User::class, 'followers', 'follower_id', 'following_id');
+    }
 }
